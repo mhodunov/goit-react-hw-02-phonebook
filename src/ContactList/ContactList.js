@@ -5,16 +5,18 @@ import styles from './ContactList.module.css';
 
 const ContactList = ({ filtered, onDeleteContact }) => {
   return (
-    <ul>
+    <ul className={styles.contactList}>
       {filtered.length ? (
         filtered.map(contact => (
-          <li key={contact.id}>
-            <div>
-              <p>{contact.name}:</p>
-              <p>{contact.number}</p>
-            </div>
-
+          <li 
+          className={styles.contactItem}
+          key={contact.id}>
+              <div>
+              <p className={styles.contactName}>{contact.name}</p>
+              <p className={styles.contactNumber}>{contact.number}</p>
+              </div>
             <button
+              className={styles.contactButton}
               onClick={() => {
                 onDeleteContact(contact.id);
               }}
@@ -24,7 +26,7 @@ const ContactList = ({ filtered, onDeleteContact }) => {
           </li>
         ))
       ) : (
-        <li className={styles.notification}>No contact found</li>
+        <li className={styles.notification}>Nothing found =(</li>
       )}
     </ul>
   );

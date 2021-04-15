@@ -41,12 +41,15 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name
+      <form 
+      className={styles.contactForm}
+      onSubmit={this.handleSubmit}>
+        <label className={styles.contactLabel}>
+          <span className={styles.contactSpan}>Name</span>
           <input
             type="name"
             name="name"
+            className={styles.contactInput}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             value={this.state.name}
@@ -54,11 +57,12 @@ class ContactForm extends Component {
             required
           />
         </label>
-        <label>
-          Number
+        <label className={styles.contactLabel}>
+          <span className={styles.contactSpan}>Number</span>
           <input
             type="tel"
             name="number"
+            className={styles.contactInput}
             pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
             title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
             value={this.state.number}
@@ -66,7 +70,9 @@ class ContactForm extends Component {
             required
           />
         </label>
-        <button type="submit">
+        <button 
+        className={styles.contactButton}
+        type="submit">
           Add contact
         </button>
       </form>
