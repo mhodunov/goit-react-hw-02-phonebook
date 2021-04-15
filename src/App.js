@@ -16,6 +16,58 @@ class App extends Component {
     filter: '',
   };
 
+  submitHandler = newContact => {
+    const { contacts } = this.state;
+    const existingContact = contacts.find(
+      contact => contact.name === newContact.name,
+    );
+    if (existingContact) {
+      alert(`${existingContact.name} is already in contacts.`);
+      return;
     }
+    this.setState({ contacts: [newContact, ...contacts] });
+  };
+
+  filterUpdate = event => {
+    const { value } = event.currentTarget;
+
+    this.setState({
+      filter: value,
+    });
+  };
+
+  deleteContact = contactId => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contact.id !== contactId,
+        ),
+      };
+    });
+  };
+
+  render() {
+    const filtered = this.state.contacts.filter(
+      ({ name, number }) =>
+        name.toLowerCase().includes(this.state.filter.toLocaleLowerCase()) ||
+        number.includes(this.state.filter),
+    );
+
+    return (
+      <div className="wrapper">
+          <ContactForm submitHandler={this.submitHandler} />
+          <Filter
+            filterValue={this.state.filter}
+            filterUpdate={this.filterUpdate}
+          />
+          <ContactList
+            filtered={filtered}
+            onDeleteContact={this.deleteContact}
+          />
+      </div>
+    );
+
+    }
+  };   
 
 export default App;
