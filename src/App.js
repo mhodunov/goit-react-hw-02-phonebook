@@ -55,11 +55,13 @@ class App extends Component {
 
     return (
       <div className="wrapper">
+        <h1 className="pageTitle">Phonebook</h1>
           <ContactForm submitHandler={this.submitHandler} />
           <Filter
             filterValue={this.state.filter}
             filterUpdate={this.filterUpdate}
           />
+          <h2 className="contactsTitle">Contacts list</h2>
           <ContactList
             filtered={filtered}
             onDeleteContact={this.deleteContact}

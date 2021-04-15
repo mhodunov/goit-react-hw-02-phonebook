@@ -5,6 +5,28 @@
   text-align: center;
 }
 
+.pageTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: coral;
+  padding: 0;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 50px;
+}
+
+.contactsTitle {
+  font-size: 24px;
+  font-weight: 500;
+  color: coral;
+  padding: 0;
+  margin-top: 50px;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+
 .App {
   text-align: center;
 }
